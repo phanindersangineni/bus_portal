@@ -1,0 +1,56 @@
+<div id="mydiv">
+    <img src="images/spinner.gif" class="ajax-loader"/>
+</div>
+<div class="page-title-container">
+            <div class="container">
+                <div class="page-title pull-left">
+                    <h2 class="entry-title" style="font-size: 0.37em; !important"  ng-bind="destinationTitleLabel">All Destinations</h2>
+                </div>
+                <ul class="breadcrumbs pull-right">
+                    <li><a ng-click="nagivatehome()" ng-bind="homeLabel">HOME</a></li>
+                    <li class="active"  ng-bind="destinationLabel">Destinations</li>
+                </ul>
+            </div>
+        </div>
+
+         <section id="content">
+            <div class="container">
+                <div id=""><br>
+                 <div class="col-sms-6 col-sm-6 col-md-3" >
+                   <input ng-model="q" id="search" class="form-control" placeholder="Search by route name">
+
+                    <br></div>
+                   
+                    <div class="items-container row add-clearfix image-box style9">
+                        <div class="col-sms-6 col-sm-6 col-md-3" ng-repeat="top in data | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize">
+                            <article class="box" style="width:"100px;height:"100px; !important">
+                                
+                                    <a  title=""><img  alt="" src="http://52.14.228.208:2000{{top.IMAGE_URL}}"></a>
+                                
+                                <div class="details">
+                                    <h4 class="box-title"><small>{{top.ROUTE_NAME}}</small> <span ng-bind="avgpersonLabel">avg/person</span>  ${{top.DURATION}}</h4>
+                                </div>
+                                <div class="action" >
+                                    <a class="button btn-small yellow full-width" ng-click="getvehiclesforsearch(top)" ng-bind="BooknowLabel">Book NOW</a>
+                                </div>
+                            </article>
+                        </div>
+                       
+                       
+                    </div>
+                    <div style="text-align:center">
+                        <span >
+                       <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+        Previous
+    </button> {{currentPage+1}}/{{numberOfPages()}}
+  <button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">
+        Next
+    </button>
+                    </span>
+                   
+           
+                </div>
+            </div>
+             <br>
+              <br>
+        </section>

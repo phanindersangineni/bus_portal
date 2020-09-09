@@ -1,0 +1,106 @@
+<div id="mydiv">
+    <img src="images/spinner.gif" class="ajax-loader"/>
+</div>
+<div class="page-title-container">
+            <div class="container">
+                <div class="page-title pull-left">
+                    <h2 class="entry-title" style="font-size: 0.37em; !important" ng-bind="availablevehLabel">Available vehicles</h2>
+                </div>
+                <ul class="breadcrumbs pull-right">
+                    <li><a  ng-click="nagivatehome()"  ng-bind="homeLabel">HOME</a></li>
+                    <li class="active" ng-bind="searchresultsLabel">Search Results</li>
+                </ul>
+            </div>
+        </div>
+
+        <section id="content" class="gray-area">
+            <div class="container">
+                    <div id=""><br>
+                    <h2 class="entry-title" style="font-size: 1.67em; !important"><span ng-bind="departlabel">Departure from</span> {{travelfromlocdesc}} &nbsp;<span ng-bind="toLabel"> to </span> {{traveltolocdesc}}</h2> 
+                    <div class="row">
+                      
+                        <div class="col-sm-8 col-md-12" >
+                            <div class="sort-by-section clearfix" style="display:none">
+                                <h4 class="sort-by-title block-sm">Sort results by:</h4>
+                                <ul class="sort-bar clearfix block-sm">
+                                    <li class="sort-by-name"><a class="sort-by-container" href="#"><span>name</span></a></li>
+                                    <li class="sort-by-price"><a class="sort-by-container" href="#"><span>price</span></a></li>
+                                    <li class="clearer visible-sms"></li>
+                                    <li class="sort-by-rating active"><a class="sort-by-container" href="#"><span>rating</span></a></li>
+                                    
+                                </ul>
+                                
+                              
+                            </div>
+                            <div class="car-list listing-style3 car">
+                                <article class="box"
+                                ng-repeat="top in data | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize">
+                                    <figure class="col-xs-2">
+                                        <span><img alt="" src="http://52.14.228.208:2000{{top.imageurl}}"></span>
+                                    </figure>
+                                    <div class="details col-xs-9 clearfix">
+                                        <div class="col-sm-8">
+                                            <div class="clearfix">
+                                                <h4 class="box-title" style="padding-right:40px;"><span ng-bind="departureLabel">Departure</span><small style="font-size: 1.00em; !important">{{top.departure}}</small><smallstyle="font-size: 1.00em; !important">{{top.departuredate}}</small></h4>
+
+                                                 <h4 class="box-title" style="padding-right:40px;"><span ng-bind="arrivalLabel">Arrival</span><small style="font-size: 1.00em; !important">{{top.arrival}}</small><smallstyle="font-size: 1.00em; !important">{{top.arrdate}}</small></h4>
+
+
+                                               
+                                            </div>
+                                             <dt  style="font-size: 1.00em;padding-top:10px; !important"><span ng-bind="servicesLabel">Services</span> </dt>
+                                            <div class="amenities">
+                                                <ul ng-repeat =" am in top.amenties">
+                                                    <li><img alt=""  style="width:32px;height:32px;"src="http://52.14.228.208:2000{{am.IMG_URL}}"  title="{{am.NAME}}"></li>
+                                                  
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-2 character">
+                                            <dl class="">
+                                                <dt class="skin-color" style="font-size: 1.67em; !important"><span ng-bind="seatsLabel">Seats</span></dt>
+                                                <dt class="skin-color" style="font-size: 1.67em; !important">{{top.availableseats}}</dt>
+                                                <dt class="skin-color" style="font-size: 1.67em; !important"><span ng-bind="availableLabel">Available</span></dt>
+                                                 <a class="button btn-mini orange"
+                                                  ng-if="top.tripetype =='F'" ng-bind="forwardLabel" >Forward Trip</a>
+                                                  <a class="button btn-mini orange"
+                                                  ng-if="top.tripetype =='R'" ng-bind="returnLabel" >Return Trip</a>
+                                                        <a class="button btn-mini dark-blue2"
+                                                       ng-if ='isShow == $index'><span ng-bind="SELECTEDLabel">SELECTED</span></a>
+
+                                            </dl>
+                                        </div>
+                                        <div class="action col-xs-6 col-sm-2" ng-if="retDate=='N' || frDate=='N'">
+                                            <span class="price"><small><span ng-bind="perpersonLabel">per person</span></small>$ {{top.price}}</span>
+                                            <a ng-click="booknow(top,$index)" class="button btn-small yellow"><span ng-bind="BooknowLabel">Book Now</span></a>
+                                            
+                                        </div> 
+                                        <div class="action col-xs-6 col-sm-2" ng-if="retDate =='Y' && frDate=='Y'">
+                                            <span class="price"><small><span ng-bind="perpersonLabel">per person</span></small>$ {{top.price}}</span>
+                                            <a ng-click="selectvehicles(top,$index)" class="button btn-small yellow"><span ng-bind="selectLabel">select</span></a>
+                                         </div>
+                                    </div>
+                                </article>
+                                
+                              
+                            </div>
+                            
+                            <div style="text-align:center">
+                        <span >
+                       <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+        Previous
+    </button> {{currentPage+1}}/{{numberOfPages()}}
+  <button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">
+        Next
+    </button>
+                    </span>
+                   
+           
+                </div>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+
+            
+        </section>

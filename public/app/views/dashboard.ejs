@@ -1,0 +1,116 @@
+<div id="mydiv">
+    <img src="images/spinner.gif" class="ajax-loader"/>
+</div>
+
+
+
+<div class="page-title-container">
+            <div class="container">
+                <div class="page-title pull-left">
+                    <h2 class="entry-title" style="font-size: 0.37em; !important" ng-bind="dashboardTittleLabel">My Dashboard</h2>
+                </div>
+                <ul class="breadcrumbs pull-right">
+                    <li><a ng-click="nagivatehome()" ng-bind="homeLabel">HOME</a></li>
+                    <li class="active" ng-bind="dashboardLabel">dashboard</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <section id="content" class="gray-area">
+            <div class="container">
+                <div id=""><br>
+                    <div class="tab-container full-width-style arrow-left dashboard">
+                        <ul class="tabs">
+                             <li class="" ><a data-toggle="tab" href="#dashboard"><i class="soap-icon-anchor circle"></i><h6 ng-bind="dashboardLabel">Dashboard</h6></a></li>
+                            <li class=""><a data-toggle="tab" href="#profile"><i class="soap-icon-user circle"></i><h6 ng-bind="profileLabel">Profile</h6></a></li>
+                            <li class=""><a data-toggle="tab" href="#mybooking"><i class="soap-icon-businessbag circle"></i><h6 
+							ng-bind="mybookingLabel">My Booking</h6></a></li>
+                           
+                            <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-settings circle"></i><h6 ng-bind="settingsLabel">Settings</h6></a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="dashboard" class="tab-pane fade in active">
+                                <h1 class="no-margin skin-color" ng-bind="dashtittleLabel">Hi Jessica, Welcome to Boletobus!</h1>
+                                <p ng-bind="dashSubtittleLabel">All your trips booked with us will appear here and you’ll be able to manage everything!</p>
+                                <br />
+                                <div class="row block">
+                                    <div class="col-sm-6 col-md-3">
+                                        <a href="">
+                                            <div class="fact blue">
+                                                <div class="numbers counters-box">
+                                                    <dl>
+                                                        <dt class="display-counter" data-value="{{bookingcount}}">{{bookingcount}}</dt>
+                                                        <dd ng-bind="box_dataLabel">Bookings</dd>
+                                                    </dl>
+                                                    <i class="icon soap-icon-hotel"></i>
+                                                </div>
+                                                
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3">
+                                        <a href="">
+                                            <div class="fact yellow">
+                                                <div class="numbers counters-box">
+                                                    <dl>
+                                                        <dt class="display-counter" data-value="{{routescount}}">{{routescount}}</dt>
+                                                        <dd ng-bind="box1_dataLabel">Total Destinations</dd>
+                                                    </dl>
+                                                    <i class="icon soap-icon-globe"></i>
+                                                </div>
+                                               
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3">
+                                        <a href="">
+                                            <div class="fact red">
+                                                <div class="numbers counters-box">
+                                                    <dl>
+                                                        <dt class="display-counter" data-value="{{vehcount}}">{{vehcount}}</dt>
+                                                        <dd ng-bind="box2_dataLabel">Total Vehicles</dd>
+                                                    </dl>
+                                                    <i class="icon soap-icon-car"></i>
+                                                </div>
+                                             
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3">
+                                        <a href="">
+                                            <div class="fact green">
+                                                <div class="numbers counters-box">
+                                                    <dl>
+                                                        <dt class="display-counter" data-value="{{companycount}}">{{companycount}}</dt>
+                                                        <dd ng-bind="box3_dataLabel">Total Operators</dd>
+                                                    </dl>
+                                                    <i class="icon soap-icon-address"></i>
+                                                </div>
+                                              
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="notification-area">
+                                    <div class="info-box block">
+                                        <span class="close"></span>
+                                        <p ng-bind="parabox_contentLabel">This is your Dashboard, the place to check your Profile, respond to Reservation Requests, view upcoming Trip Information, and much more.</p>
+                                        <br />
+                                        <ul class="circle">
+                                            <li><span class="skin-color" ng-bind="blueboxLabel">Learn How It Works</span> <span ng-bind="blueboxcontentlabel"> — Watch a short video that shows you how Boletobus works.</span></li>
+                                            <li><span class="skin-color" ng-bind="bluebox1Label" >Get Help</span><span ng-bind="blueboxcontent1Label"> — View our help section and FAQs to get started on Boletobus. </span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr>
+                              
+                            </div>
+                           
+                          </div>
+                    </div>
+                </div>
+            </div><br>
+        </section>
+
+      

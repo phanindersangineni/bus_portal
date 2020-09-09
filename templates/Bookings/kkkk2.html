@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+  
+    <title> Booking Confirmation Mail </title>
+  
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <style>
+  /* 2.2.4. Term Description */
+.term-description {
+  text-transform: uppercase;
+  }
+  .term-description dt, dl.term-description dd {
+    
+    float: left;
+  
+   
+   }
+  .term-description dt {
+    
+    color: #01b7f2;
+    font-weight: 400;
+    padding-right: 5px;
+    clear: both;
+
+  }
+  .term-description dd {
+
+ margin-left:250px;
+ padding-left:250px;
+}
+.term-description:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+    .form-group {
+    margin-bottom: 15px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+@media (min-width: 992px)
+bootstrap.css:1928
+.col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+    float: left;
+}
+
+@media (min-width: 992px)
+bootstrap.css:1952
+.col-md-5 {
+    width: 41.66666667%;
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+  
+  </style>
+  </head>
+  <body style="background:#ccc;margin-left:-400px;">
+  <div style="max-width:600px; width:100%; margin:10px auto; border:none;" cellpadding="0" cellspacing="0">
+    
+      
+        <div style="margin-left:410px;display:inline-block; vertical-align:middle; width:100px; height:100px; padding: 10px; border-radius:100%; -webkit-border-radius:100%; background:#fff; margin-bottom: -30px; box-shadow: rgba(0,0,0,0.2) 0 1px 11px 0; -webkit-box-shadow: rgba(0,0,0,0.2) 0 1px 11px 0;">
+          <img src="http://52.14.228.208:4000/images/logo/logo.png" alt="" style="max-width:100%; padding-top:35px;"/>
+        </div>
+      
+  
+    <div style="background:#fff; border-radius:5px; -webkit-border-radius:5px; padding:60px 20px; text-align:left;width:160%;">
+        <h1 style="font-family: 'Open Sans', sans-serif; font-size:30px; color:#121212; font-weight:700; margin:0 0 15px; line-height:1;float:left;margin-left:5px;">Hello Joshua Aroke</h1>
+        <br><br>
+        <h4>Traveler Information</h4>
+                              <div class="term-description">
+                                <dt>Booking number:</dt><dd><%=BOOKING_ID%></dd>
+                                <dt>Booking status:</dt><dd><%=BOOKING_STATUS%></dd>
+                                 <dt>Booking Date:</dt><dd><%=BKDATE%></dd>
+                                <dt>User name:</dt><dd><%=CUSTOMERNAME%></dd>
+                                <dt>E-mail address:</dt><dd><%=EMAIL_ID%></dd>
+                                <dt>Booking Address:</dt><dd><%=BOOKINGADDRESS%></dd>
+                                <% if (DOCUMENT != "-1"){ %>
+                                <dt >Document:</dt><dd><%=DOCUMENT%></dd>
+                                <%}%>
+                                 <% if (DOCUMENT_NUMBER !=null){ %>
+                                <dt>Document Number:</dt><dd><%=DOCUMENT_NUMBER%></dd>
+                                <%}%>
+                                <dt>Phone:</dt><dd>+<%=PHONE%> </dd>
+
+                            </div>
+              
+              <br>
+              
+                      <h4 >Ticket Information</h4>
+            <br>
+                              
+                               <div class="form-group row">
+                                 <div class="col-sm-6 col-md-5">
+                                            <label style="color:#01b7f2;">Route : </label>
+                                        <p>  Departure from <%=departurefrom%> to <%=departureto%> </p>
+                                        </div>
+                               </div>  
+<br>                 
+        
+        <div class="form-group row">
+                                        <div >
+                                            <label style="color:#01b7f2;">Ticket Number : </label>
+                                          <p> <%=TICKET_ID%> </p>
+                                        </div>
+                                        <div >
+                                            <label style="color:#01b7f2;">Departure Time:</label>
+                                         <p> <%=DEPARTURE_DATE%> </p> 
+                                        </div>
+                                         <div>
+                                            <label style="color:#01b7f2;">Arrival Time:</label>
+                                          <p>  <%=ARRIVAL_DATE%> </p>
+                                        </div>
+                                        
+                                         <div ">
+                                            <label style="color:#01b7f2;">Confirmed Seats:</label>
+                                            <p> <%=TOTAL_TICKETS%></p>
+                                        </div>
+                                        <div>
+                                            <label style="color:#01b7f2;">Seat Numbers:</label>
+                                            <p> <%=SEAT_NUMBER%></p>
+                                        </div>
+                    <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Travel Date:</label>
+                                            <p><%=TRAVELDATE%></p>
+                                        </div>
+                    <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Vehicle Number:</label>
+                                            <p><%=VEH_REG_NUMBER%></p>
+                                        </div>
+                                         
+                    
+              </div>
+      
+      
+        <br>
+       <h4 >Your Pickup and Drop points</h4>
+       <br>
+                              
+                               <div class="form-group row">
+                                 <div class="col-sm-6 col-md-5">
+                                            <label style="color:#01b7f2;">Pickup Point : </label>
+                                        <p>  <%=PICKUP_POINT_NAME%> </p>
+                                        </div>
+                    
+                    <div class="col-sm-6 col-md-5">
+                                            <label style="color:#01b7f2;">Drop Point: </label>
+                                        <p>  <%=DROP_POINT_NAME%> </p>
+                                        </div>
+                               </div>
+                 <br>
+
+
+         <%if(TICKET_ID1 !="N") {%>
+        <div class="form-group row">
+                                        <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Ticket Number : </label>
+                                          <p> <%=TICKET_ID1%> </p>
+                                        </div>
+                                        <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Departure Time:</label>
+                                         <p> <%=DEPARTURE_DATE1%> </p> 
+                                        </div>
+                                         <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Arrival Time:</label>
+                                          <p>  <%=ARRIVAL_DATE1%> </p>
+                                        </div>
+                                        
+                                         <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Confirmed Seats:</label>
+                                            <p> <%=TOTAL_TICKETS1%></p>
+                                        </div>
+                                        <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Seat Numbers:</label>
+                                            <p> <%=SEAT_NUMBER1%></p>
+                                        </div>
+                    <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Travel Date:</label>
+                                            <p><%=TRAVELDATE1%></p>
+                                        </div>
+                    <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Vehicle Number:</label>
+                                            <p><%=VEH_REG_NUMBER1%></p>
+                                        </div>
+                                         
+                    
+              </div>
+      
+      
+        <br>
+       <h4 >Your Pickup and Drop points</h4>
+       <br>
+                              
+                               <div class="form-group row">
+                                 <div class="col-sm-6 col-md-5">
+                                            <label style="color:#01b7f2;">Pickup Point : </label>
+                                        <p>  <%=PICKUP_POINT_NAME1%> </p>
+                                        </div>
+                    
+                    <div class="col-sm-6 col-md-5">
+                                            <label style="color:#01b7f2;">Drop Point: </label>
+                                        <p>  <%=DROP_POINT_NAME1%> </p>
+                                        </div>
+                               </div>
+                 <br>
+   <%}%>
+
+   <h4>Additional Information</h4>
+   <br>
+                            <p>Praesent dolor lectus, rutrum sit amet risus vitae, imperdiet cursus neque. Nulla tempor nec lorem eu suscipit. Donec dignissim lectus a nunc molestie consectetur. Nulla eu urna in nisi adipiscing placerat. Nam vel scelerisque magna. Donec justo urna, posuere ut dictum quis.</p>
+                            <br />               
+                 
+      
+    </div>
+    
+    
+    <div style="text-align:center; padding:20px 0 0;">
+        
+      
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  
+  
+  
+      
+                       
+  
+  
+  
+  
+  
+  
+  </body>
+</html>

@@ -1,0 +1,656 @@
+<div id="mydiv">
+    <img src="images/spinner.gif" class="ajax-loader"/>
+</div>
+<div class="page-title-container">
+            <div class="container">
+                <div class="page-title pull-left">
+                    <h2 class="entry-title" style="font-size: 0.37em; !important" id="ticketbookingLabel">Ticket Booking</h2>
+                </div>
+                <ul class="breadcrumbs pull-right">
+                    <li><a ng-click="nagivatehome()" id="homeLabel">HOME</a></li>
+                      <li><a ui-sref="vehicles" id="vehiclesLabel">vehicles</a></li>
+                    <li class="active" id="ticketbookingLabel2">Ticket Booking</li>
+                </ul>
+            </div>
+        </div>
+
+        <section id="content" class="gray-area">
+            <div class="container"><br>
+            <h2 class="entry-title" style="font-size: 1.67em; !important" ><span ng-bind="departlabel">Departure from </span> {{travelfromlocdesc}} {{toLabel}} {{traveltolocdesc}}</h2>  {{displaydate}}
+                <div class="row">
+                    <div  class="col-sms-6 col-sm-8 col-md-9">
+                        <div class="booking-section travelo-box">
+                            
+                            <form class="booking-form">
+                                <div class="person-information">
+                                    <h2 id="personalinfolabel">Your Personal Information</h2>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 col-md-3">
+                                            <label><span id="firstnameLabel">first name</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                            <input type="text" maxlength="20" ng-model="fistname" class="input-text full-width" value="" placeholder="" only-alphabets/>
+											<div id="firstNameErrorDiv"  style="width:200px;height:20px;color:red" hidden>
+											<p  ng-bind="firstNameErrorMsg"></p>
+											</div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+										  <label><span id="lastnameLabel">last name</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                          <!--  <label id="lastnameLabel">last name</label> -->
+                                            <input type="text" maxlength="20" ng-model="lastname"  class="input-text full-width" value="" placeholder=""  only-alphabets/>
+											<div id="lastnameErrorDiv"  style="width:200px;height:20px;color:red" hidden>
+											<p  ng-bind="lastnameErrorMsg"></p>
+											</div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+										  <label><span id="addressLabel">Address</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                          <!--  <label id="addressLabel">Address </label> -->
+                                            <input type="text" maxlength="50" ng-model="address" class="input-text full-width" value="" placeholder="" />
+											<div id="addressErrorDiv"  style="width:200px;height:20px;color:red" hidden>
+											<p  ng-bind="addressErrorMsg"></p>
+											</div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+										   <label><span id="DOBLabel">DOB</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                        
+                                        <datepicker date-format="yyyy-MM-dd" >
+                           <input ng-model="dob" class="input-text full-width"  type="text" placeholder="{{dateofbirthPlaceHolder}}"/>
+                          
+                           </datepicker> 
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 col-md-3">
+										  <label><span id="emailaddressLabel">email address</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                       
+                                            <input type="text"  maxlength="30" ng-model="emailid" class="input-text full-width" value="" placeholder=""  valid-email/>
+											<div id="emailidErrorDiv"  style="width:200px;height:20px;color:red" hidden>
+											<p  ng-bind="emailidErrorMsg"></p>
+											</div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+										  <label><span id="verifyemailLabel">Verify E-mail Address</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                        
+                                            <input type="text" maxlength="30" ng-model="verifyemailid" class="input-text full-width" value="" placeholder=""  valid-email />
+											<div id="verifyemailidErrorDiv"  style="width:200px;height:20px;color:red" hidden>
+											<p  ng-bind="verifyemailidErrorMsg"></p>
+											</div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+										  <label><span id="genderLabel">Gender</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                         <!--   <label id="genderLabel">Gender</label> -->
+                                           <select class="full-width" ng-model="gender">	   
+										             <option value="-1" id="selectGenderLabel">Select Gender</option>
+                                                    <option value="M" id="gendermaleLabel">Male</option>
+                                                    <option value="F" id="genderfemaleLabel">Female</option>
+                                                </select>
+												<div id="genderErrorDiv"  style="width:200px;height:20px;color:red" hidden>
+												<p  ng-bind="genderErrorMsg"></p>
+												</div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+										  <label><span id="countrycodeLabel">Country code</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                            <div >
+                                               <input type="text" maxlength="3" ng-model="ccode" class="input-text full-width" value="" placeholder="" only-number />
+											   <div id="ccodeErrorDiv"  style="width:200px;height:20px;color:red" hidden>
+												<p  ng-bind="ccodeErrorMsg"></p>
+												</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                       
+                                        <div class="col-sm-6 col-md-3">
+										  <label><span id="phnumLabel">Phone number</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                          <!--  <label id="phnumLabel">Phone number</label> -->
+                                            <input type="text"  maxlength="12" ng-model="phone" class="input-text full-width" value="" placeholder="" only-number />
+											<div id="phoneErrorDiv"  style="width:200px;height:20px;color:red" hidden>
+											<p  ng-bind="phoneErrorMsg"></p>
+											</div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+										  <label><span id="typeofdocLabel">Type of Document</span></label>
+                                         <!--   <label id="typeofdocLabel">Type of Document</label> -->
+                                            <div >
+                                                <select class="full-width" ng-model="typeofdoc">
+                                                    <option value="-1" id="selectdoctypeLabel">Select document type</option>
+                                                    <option value="Passport" id="passportLabel">Passport</option>
+                                                </select>
+												<div id="typeofdocErrorDiv"  style="width:200px;height:20px;color:red" hidden>
+												<p  ng-bind="typeofdocErrorMsg"></p>
+												</div>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+										   <label><span id="docnumLabel">Document Number</span></label>
+                                         <!--   <label id="docnumLabel">Document Number</label> -->
+                                            <div >
+                                               <input type="text" maxlength="30" ng-model="docnumber" class="input-text full-width" value="" placeholder="" />
+											   <div id="docnumberErrorDiv"  style="width:200px;height:20px;color:red" hidden>
+												<p  ng-bind="docnumberErrorMsg"></p>
+												</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                          <h2 id="tripinfoLabel">Your Trip Details (Forward Trip)</h2>
+                                        <div class="form-group row">
+                                       
+                                        <div class="col-sm-6 col-md-3">
+                                             
+                                        <span><img style="width:100px;height:100px;" alt="" src="http://52.14.228.208:2000{{companyurl1}}"></span>
+                                    
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                            <label id="deptLabel">Departure</label>
+                                            <div >
+                                               {{departure1}} <P>{{depdate1}}
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+                                            <label id="arrvlLabel">Arrival</label>
+                                            <div >
+                                              {{arrival1}}<P>{{arrdate1}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3" ng-if="showseats">
+                                            <label>Seat Number</label>
+                                            <div >
+                                              {{forwardseats}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 col-md-3">
+                                            <label id="adultLabel">Adult {{adultseat}}</label>
+                                            <div >
+                                                <select class="full-width" ng-model="adultseat" ng-change="getadultfareforward(adultseat)">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+                                            <label id="childrenLabel">Children </label>
+                                            <div >
+                                                <select class="full-width" ng-model="child" id ="child" ng-change ="getchildfareforward(child)">
+                                                    <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+                                            <label id="retiredLabel">Retired</label>
+                                            <div >
+                                                <select class="full-width" id="retired" ng-model="retired"  ng-change ="getretiredfareforward(retired)">
+                                                     <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h2 ng-bind="pickupdropLabel">Your Pick and Drop points</h2>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 col-md-3">
+                                            <label ng-bind="pickupLabel">Pickup Point</label>
+                                            <div >
+                                               <select class="form-control" ng-model="pickup1">
+                  <option value="-1">{{pickupLabel}}</option>
+                  <option data-ng-repeat="cnt in pickupforward" value="{{cnt.ID}}" >{{cnt.PICKUP_POINT_NAME}}</option>
+                  
+                  </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+                                            <label ng-bind="dropLabel">Drop Point</label>
+                                            <div >
+                                                <select class="form-control" ng-model="drop1">
+                  <option value="-1">{{dropLabel}}</option>
+                  <option data-ng-repeat="cnt in dropforward" value="{{cnt.ID}}" >{{cnt.DROP_POINT_NAME}}</option>
+                  
+                  </select>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                       
+
+                                     <div class="form-group row" ng-if="recordlists.length==2">
+                                      <h2 id="rturntripinfoLabel">Your Trip Details (Return Trip)</h2>
+                                       
+                                        <div class="col-sm-6 col-md-3">
+                                             
+                                        <span><img style="width:100px;height:100px;" alt="" src="http://52.14.228.208:2000{{companyurl2}}"></span>
+                                    
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                            <label id="deptLabel">Departure</label>
+                                            <div >
+                                              {{departure2}} <P>{{depdate2}}
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+                                            <label id="arrvlLabel">Arrival</label>
+                                            <div >
+                                             {{arrival2}}<P>{{arrdate2}}
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3" ng-if="showseats2">
+                                            <label>Seat Number</label>
+                                            <div >
+                                              {{returnseats}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group row" ng-if="recordlists.length==2">
+                                        <div class="col-sm-6 col-md-3">
+                                            <label>Adult</label>
+                                            <div >
+                                                 <select class="full-width" ng-model="adultseat1" id="adult1" ng-change="getadultfarereturn(adultseat1)">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+                                            <label>Children</label>
+                                            <div >
+                                                <select class="full-width" ng-model="child1" id ="child1" ng-change ="getchildfarereturn(child1)">
+                                                    <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+                                            <label>Retired</label>
+                                            <div >
+                                                 <select class="full-width" id="retired1" ng-model="retired1"  ng-change ="getretiredfarereturn(retired1)">
+                                                     <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                     
+
+                                    </div>
+                                     <div ng-if="recordlists.length==2">      
+                                    <h2 ng-bind="pickupdropLabel">Your Pick and Drop points</h2>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 col-md-3">
+                                            <label ng-bind="pickupLabel">Pickup Point</label>
+                                            <div >
+                                               <select class="form-control" ng-model="pickup2">
+                  <option value="-1">{{pickupLabel}}</option>
+                  <option data-ng-repeat="cnt in pickupreturn" value="{{cnt.ID}}" >{{cnt.PICKUP_POINT_NAME}}</option>
+                  
+                  </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+                                            <label ng-bind="dropLabel">Drop Point</label>
+                                            <div >
+                                                <select class="form-control" ng-model="drop2">
+                  <option value="-1">{{dropLabel}}</option>
+                  <option data-ng-repeat="cnt in dropreturn" value="{{cnt.ID}}" >{{cnt.DROP_POINT_NAME}}</option>
+                  
+                  </select>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    </div>
+
+
+                                    
+                                </div>
+                                <hr />
+                        <div class="form-group row">
+                        <h2 ng-bind="paydetailLabel">Payment Details</h2>
+
+                        <div class="col-sm-6 col-md-3">
+                                            <label ng-bind="selectpaydetailLabel">Select payment type</label>
+                                            <div >
+                                                <select class="form-control" ng-model="paymenttype" ng-change="displaycheckoutoption()">
+                  <option value="-1" ng-bind="selectpaydetailLabel">Select payment type</option>
+                  <option value="ONLINE">Online</option>
+                   <option value="MARKETCASH">Supermarket Cash</option>
+                 
+                  </select>
+                                            </div>
+                                        </div>
+
+                        
+                        </div>  
+                       
+
+                       <div class="form-group row" id="pageofacilcheckout" style="display:none">
+                        <h2 ng-bind="cardinfoLabel">Card Information</h2>
+
+                                        <div class="col-sm-6 col-md-3">
+                                            <label><span ng-bind="cardholdnameLabel">Card holder name</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                            <input type="text" maxlength="20" ng-model="cardholdername" class="input-text full-width" value="" placeholder="" only-alphabets/>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                          <label><span ng-bind="cardholdlastnameLabel">Card holder last name</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                            <input type="text" maxlength="20" ng-model="cardholderlastname"  class="input-text full-width" value="" placeholder="" only-alphabets/>
+                                            
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                          <label><span ng-bind="cardholdemailLabel">Card Holder Email</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                          
+                                            <input type="text" maxlength="50" ng-model="cardholderemail" class="input-text full-width" value="" placeholder=""  valid-email/>
+                                            
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+                                           <label><span ng-bind="cardholdaddLabel">Card Holder Address</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                         <input type="text" maxlength="50" ng-model="cardholderaddress" class="input-text full-width" value="" placeholder="" />
+                                          
+                                          
+                                        </div>
+                                    </div>
+
+                     <div class="form-group row" id="pageofacilcheckout1" style="display:none">
+                                        <div class="col-sm-6 col-md-3">
+                                            <label><span ng-bind="cardholdphoneLabel">Card holder phone</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                            <input type="text" maxlength="20" ng-model="cardholderhone" class="input-text full-width" value="" placeholder="" only-number/>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                          <label><span ng-bind="cardnumLabel">Credit card number</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                            <input type="text" maxlength="50" ng-model="cardnumber"  class="input-text full-width" value="" placeholder="" only-number/>
+                                            
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                          <label><span ng-bind="cardexpmonLabel">Card Expiry Month</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                          
+                                            <input type="text" maxlength="2" ng-model="expirymonth" class="input-text full-width" value="" placeholder="" only-number/>
+                                            
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+                                           <label><span ng-bind="cardexpyearLabel">Card Expiry Year</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                         <input type="text" maxlength="50" ng-model="expiryyear" class="input-text full-width" value="" placeholder="" only-number/>
+                                          
+                                          
+                                        </div>
+                                    </div>
+
+                       <div class="form-group row" id="pageofacilcheckout2" style="display:none">
+                                        <div class="col-sm-6 col-md-3">
+                                            <label><span ng-bind="cvvLabel">CVV</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                            <input type="text" maxlength="20" ng-model="cvv" class="input-text full-width" value="" placeholder="" only-number/>
+                                        </div>
+                                       
+                                      
+                                    </div>
+                         
+
+                                      <div class="form-group row" id ="supermarketcheckout" style="display:none">
+                                       <h2 ng-bind="suprmarhtchckoutLabel">Supermarket Checkout</h2>
+                                        <div class="form-group">
+                            <input type="checkbox" id="chks"> {{bookingrefLabel}}
+                               </div>
+                                      
+                                    </div>
+
+
+
+                                <hr />
+                                <div class="form-group" id ="supermarketcheckout" style="display:none">
+                                    <div class="">
+                                        <label>
+                                            <span id="checboxoneLabel"> By continuing, you agree to the</span> <a><span class="skin-color" id="bluechcbxLabel">Terms and Conditions</span></a>.<span id="checboxtwoLabel">Block your seat before you can confirm your bookings to avoid seats unavailability. </span><span ng-if="confirmbooking" id="checboxparaLabel">Your seats will be blocked upto <b>{{timercounter}} </b> secs </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                               <div class="form-group row" ng-if="!confirmbooking"> 
+                                  
+                              
+                                    <div class="col-sm-6 col-md-5">
+                                     <!--   <button type="submit" ng-click="blockseats()" class="full-width btn-large" id="blockSeatsButtonLabel">Block Seats</button> -->
+									  <button type="submit" ng-click="blockseats()" class="full-width btn-large" id="blockSeatsButtonLabel">{{blockSeatsButtonLabel}}</button> 
+                                    </div>
+                                </div>
+                               <div class="form-group row" ng-if="confirmbooking">
+							   
+                                    <div class="col-sm-6 col-md-5">
+                                    <!--    <button type="submit" ng-click="bookingConfrimed()" class="full-width btn-large" id="confirmBookingButtonLabel">Confirm Booking</button> -->
+									  <button type="submit" ng-click="bookingConfrimed()" class="full-width btn-large" id="confirmBookingButtonLabel">{{confirmBookingButtonLabel}}</button> 
+                                    </div>
+                                </div>
+
+                                
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sidebar col-sms-6 col-sm-4 col-md-3">
+                        <div class="booking-details travelo-box">
+                            <h4 id="bsLabel">Booking Summary</h4>
+                            <article class="flight-booking-details">
+                                <figure class="clearfix">
+                                    <a title="" href="flight-detailed.html" class="middle-block"><img class="middle-item" alt="" src="http://52.14.228.208:2000{{companyurl1}}"></a>
+                                    <div class="travel-title">
+                                        <h5 class="box-title">{{companyname1}}</h5>
+                                       <h5 class="box-title">{{totalpassengers}} {{passengersLabel}}   $ {{totalticketprice}}</h5>
+                                      <dd class="value"> <input type="text" maxlength="10" id="promoPlaceHolder" ng-model="promocode1" class="input-text full-width" value="" placeholder="Enter Promo Code" />
+                                 <!--   <a style="margin-top:2px;" ng-if="!promoapplied1" ng-click="validatepromocode()" class="button btn-small yellow">Apply</a>  -->
+								   <a style="margin-top:2px;" ng-if="!promoapplied1" ng-click="validatepromocode()" class="button btn-small yellow">{{ApplyLabel}}</a>
+                                   <a style="margin-top:2px;" ng-if="promoapplied1" ng-click="resetpromocode()" class="button btn-small yellow">Reset</a>
+                                   </dd>
+                                    </div>
+                                </figure>
+
+                                <div class="details">
+                                    <div class="icon-box style11 full-width" ng-if="totaladult!=0">
+                                        <div class="icon-wrapper">
+                                            <i class="soap-icon-departure"></i>
+                                        </div>
+                                        <dl class="details">
+                                            <dt class="skin-color" id="adultLabel2">Adult</dt>
+                                            <dd> {{totaladult}}  *  $ {{adultticketprice}}  </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="icon-box style11 full-width"  ng-if="totalchild!=0">
+                                        <div class="icon-wrapper">
+                                            <i class="soap-icon-departure"></i>
+                                        </div>
+                                        <dl class="details">
+                                            <dt class="skin-color">Children</dt>
+                                            <dd>  {{totalchild}} * $ {{childticketprice}}</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="icon-box style11 full-width"  ng-if="totalretired!=0">
+                                        <div class="icon-wrapper">
+                                            <i class="soap-icon-departure"></i>
+                                        </div>
+                                        <dl class="details">
+                                            <dt class="skin-color">Retired</dt>
+                                            <dd> {{totalretired}} *  $ {{retiredticketprice}}</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                               
+                            </article>
+
+
+                            <article class="flight-booking-details" ng-if ="recordlists.length==2">
+                                <figure class="clearfix">
+                                    <a title="" href="flight-detailed.html" class="middle-block"><img class="middle-item" alt="" src="http://52.14.228.208:2000{{companyurl2}}"></a>
+                                    <div class="travel-title">
+                                        <h5 class="box-title">{{companyname2}} (return trip)</h5>
+                                       <h5 class="box-title">{{totalpassengers1}} {{passengersLabel}}  $ {{totalticketprice1}}</h5>
+                                       <dd class="value"> <input type="text" maxlength="10" ng-model="promocode2" id="promocode2" class="input-text full-width"  placeholder="Enter Promo Code" />
+                                <!--   <a style="margin-top:2px;" ng-if="!promoapplied2" ng-click="validatepromocodeReturn()" class="button btn-small yellow">Apply</a> -->
+								 <a style="margin-top:2px;" ng-if="!promoapplied2" ng-click="validatepromocodeReturn()" class="button btn-small yellow">{{ApplyLabel2}}</a>
+                                   <a style="margin-top:2px;" ng-if="promoapplied2" ng-click="resetpromocodeReturn()" class="button btn-small yellow">Reset</a>
+                                   </dd>
+                                    </div>
+                                </figure>
+
+                                <div class="details">
+                                    <div class="icon-box style11 full-width" ng-if="totaladult1!=0">
+                                        <div class="icon-wrapper">
+                                            <i class="soap-icon-departure"></i>
+                                        </div>
+                                        <dl class="details">
+                                            <dt class="skin-color">Adult</dt>
+                                            <dd> {{totaladult1}}  *  $ {{adultticketprice1}}  </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="icon-box style11 full-width" ng-if="totalchild1!=0">
+                                        <div class="icon-wrapper">
+                                            <i class="soap-icon-departure"></i>
+                                        </div>
+                                        <dl class="details">
+                                            <dt class="skin-color">Children</dt>
+                                            <dd>  {{totalchild1}} * $ {{childticketprice1}}</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="icon-box style11 full-width" ng-if="totalretired1!=0">
+                                        <div class="icon-wrapper">
+                                            <i class="soap-icon-departure"></i>
+                                        </div>
+                                        <dl class="details">
+                                            <dt class="skin-color">Retired</dt>
+                                            <dd> {{totalretired1}} *  $ {{retiredticketprice1}}</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                               
+                            </article>
+
+                            
+                            <h4 id="taxLabel">Taxes & Fees</h4>
+                            <dl class="other-details">
+                                <dt class="feature" id="totalLabel">Total Seats:</dt><dd class="value">{{totalseats}}</dd>
+                                <dt class="feature" id="subLabel2">Sub Total:</dt><dd class="value"> $ {{totalprice}}</dd>
+                                <dt class="feature" id="chargeLabel">Charges:</dt><dd class="value">$ {{totalcharges}}</dd>
+                                   
+                                  <dt class="feature" id="taxesLabel">Taxes:</dt>
+                                  <dd class="value">$ {{totaltaxes}}
+                                  </dd> 
+                                  <div ng-if="promoapplied1 || promoapplied2">
+                                    <dt class="feature">Discounts:</dt><dd class="value"> $ {{totaldiscount}}</dd>
+                                    </div>
+                                <dt class="total-price" id="priceLabel">Total Price</dt><dd class="total-price-value">$ {{totalamount}}</dd>
+                                  
+
+
+                            </dl>
+                        </div>
+                        
+                        <div class="travelo-box contact-box">
+                            <h4 id="needLabel">Need Boletobus Help?</h4>
+                            <p id="weLabel">We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
+                            <address class="contact-details">
+                                <span class="contact-phone"><i class="soap-icon-phone"></i> +507 6148-2174</span>
+                                <br>
+                                <a class="contact-email" href="#">hola@bukate.com</a>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+              <div id="sup-ref" class="travelo-login-box travelo-box">
+                
+             
+                
+                <form>
+                    <div class="form-group">
+                        {{bookingrefLabel}}
+                    </div>
+                
+                </form>
+                <div class="seperator"></div>
+            
+               <p><button type="submit" ng-click="cancelpaymentype()" class="full-width btn-default">cancel</button> <br>
+               <button type="submit" ng-click="comfirmpayment()" class="full-width btn-medium"> confirm</button></p>
+                <div class="seperator"></div>
+                
+            </div>
+
+          <div id="guest-checkout" class="travelo-login-box travelo-box">
+                
+             
+                <div class="seperator"><label>{{guestboxLabel1}} </label></div>
+                <form>
+                    <div class="form-group">
+                        <input type="text" ng-model="guestnumber" id="guestnumber" class="input-text full-width" placeholder="{{telplaceholder}}" valid-number>
+                       
+                    </div>
+                
+                </form>
+                <div class="seperator"></div>
+            
+               <p><button type="submit" ng-click="continueguestcheckout()" class="btn-mediumlogin"> {{Continuelabel}}</button></p>
+		
+		<button type="button"  class="btn-mediumguest" onclick="jQuery('#soap-popupbox').css('display', 'none');">CLOSE</button>
+			   <div class="seperator"></div>
+                
+            </div>
+
+       

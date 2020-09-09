@@ -1,0 +1,62 @@
+<div class="page-title-container">
+            <div class="container">
+                <div class="page-title pull-left">
+                    <h2 class="entry-title" style="font-size: 0.37em; !important"  ng-bind="dashboardTittleLabel">My Dashboard</h2>
+                </div>
+                <ul class="breadcrumbs pull-right">
+                    <li><a ng-click="nagivatehome()" ng-bind="homeLabel">HOME</a></li>
+                    <li class="active" ng-bind="dashboardLabel">dashboard</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <section id="content" class="gray-area">
+            <div class="container">
+                <div id=""><br>
+                    <div class="tab-container full-width-style arrow-left dashboard">
+                        <ul class="tabs">
+    <li class="" ><a data-toggle="tab" href="#dashboard"><i class="soap-icon-anchor circle"></i><h6 ng-bind="dashboardLabel">Dashboard</h6></a></li>
+    <li class="active"><a data-toggle="tab" href="#profile"><i class="soap-icon-user circle"></i><h6 ng-bind="profileLabel">Profile</h6></a></li> 
+            <li class=""><a data-toggle="tab" href="#mybooking"><i class="soap-icon-businessbag circle"></i><h6 
+							ng-bind="mybookingLabel">My Booking</h6></a></li>
+                          
+                            <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-settings circle"></i><h6 ng-bind="settingsLabel">Settings</h6></a></li>
+                        </ul>
+                        <div class="tab-content">
+                           
+                            <div id="profile" class="tab-pane fade in active">
+                                <div class="view-profile">
+                                    <article class="image-box style2 box innerstyle personal-details">
+                                        
+                                        <div class="details">
+            <a href="#editprofile" class="button btn-small yellow pull-right edit-profile-btn" ng-click="editfunction()" ng-bind="editprofileButton" id="pp">EDIT PROFILE</a>
+  
+                        <h2 class="box-title fullname" ng-bind="userdetailsLabel">User Details</h2>
+                                            <dl class="term-description">
+                                                <dt ng-bind="firstnameLabel">First Name</dt><dd>{{firstname}}</dd>
+                                                <dt ng-bind="lastnameLabel">Last Name</dt><dd>{{lastname}}</dd>
+                                                <dt ng-bind="emailLabel">Email </dt><dd>{{email}}</dd>
+                                                <dt ng-bind="telLabel">Tel</dt><dd>{{telephone}}</dd>
+                                                <dt ng-bind="languageLabel" ng-if="languagename!=-1">Language</dt><dd>{{languagename}}</dd>
+                                                <dt ng-bind="cityLabel" ng-if="cityname!=-1 ">City</dt><dd>{{cityname}}</dd>
+                                                <dt ng-bind="countryLabel" ng-if="countryname!=-1">Country</dt><dd>{{countryname}}</dd>
+                                                <dt ng-bind="addressLabel">Address</dt><dd>{{address}}</dd>
+                                                <dt ng-bind="companyLabel">Company</dt><dd>{{company}}</dd>
+                                                                                        
+                                            </dl>
+                                        </div>
+                                    </article>
+                                    <hr>
+                                   
+                               
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+        </section>
+
+
+      

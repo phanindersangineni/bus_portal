@@ -1,0 +1,15 @@
+[{
+  "name"      : "bukate",
+   "env_production" : {
+       "NODE_ENV": "production"
+    },
+  "script"    : "./server.js",
+  "args"      : "['--production']",
+  "exec_mode": "cluster",
+  "instances" : "2",
+  "max_memory_restart": "100M",
+  "merge_logs": true,
+  
+}
+
+]

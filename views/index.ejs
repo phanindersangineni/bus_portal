@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html ng-app="CDSApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bukate</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+  <!-- Theme Styles -->
+  <link rel="stylesheet" href="../../dist/css/sweetalert.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/animate.min.css">
+    
+    <!-- Current Page Styles -->
+    <link rel="stylesheet" type="text/css" href="components/revolution_slider/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="components/revolution_slider/css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="components/jquery.bxslider/jquery.bxslider.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="components/flexslider/flexslider.css" media="screen" />
+    
+    <!-- Main Style -->
+    <link id="main-style" rel="stylesheet" href="css/style.css">
+
+     <link href="../css/angular-datepicker.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Updated Styles -->
+    <link rel="stylesheet" href="css/updates.css">
+    
+    <!-- Responsive Styles -->
+    <link rel="stylesheet" href="css/responsive.css">
+
+     <link rel="stylesheet" type="text/css" href="../css/jquery.seat-charts.css">
+
+    
+  <style>
+
+   section#content {  min-height: 0px; padding: 0; position: relative; overflow: hidden; }
+        #main { padding-top: 200px; }
+        .page-title, .page-description { color: #fff; }
+        .page-title { font-size: 4.1667em; font-weight: bold; }
+        .page-description { font-size: 2.5em; margin-bottom: 50px; }
+        .featured { position: absolute; right: 50px; bottom: 50px; z-index: 9; margin-bottom: 0;  text-align: right; }
+        .featured figure a { border: 2px solid #fff; }
+        .featured .details { margin-right: 10px; }
+        .featured .details > * { color: #fff; line-height: 1.25em; margin: 0; font-weight: bold; text-shadow: 2px -2px rgba(0, 0, 0, 0.2); }
+
+
+            #mydiv {  
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            z-index:1000;
+            background-color:grey;
+            opacity: .8;
+            }
+
+            .ajax-loader {
+            position: absolute;
+            left: 40%;
+            top: 5%;
+            margin-left: -32px; /* -1 * image width / 2 */
+            margin-top: -32px;  /* -1 * image height / 2 */
+            display: block;     
+            }
+
+            .front-indicator {
+        width: 145px;
+        margin: 5px 32px 15px 32px;
+        background-color: #f6f6f6;  
+        color: #adadad;
+        text-align: center;
+        padding: 3px;
+        border-radius: 5px;
+        }
+
+
+        div.seatCharts-cell {
+        color: #182C4E;
+        height: 25px;
+        width: 25px;
+        line-height: 25px;
+
+        }
+        div.seatCharts-seat {
+        color: #FFFFFF;
+        cursor: pointer;  
+        }
+        div.seatCharts-row {
+        height: 35px;
+        }
+        div.seatCharts-seat.available {
+    background-color: #B9DEA0;
+
+}
+
+  .sweet-alert {
+     /* width: 380px;*/
+ width: 450px;
+     margin-left:-110px;
+ 
+} 
+
+ .sweet-alert {
+   margin-top: -20px;
+       } 
+.sweet-alert h2 {
+    color: #575757;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 400;
+    text-transform: none;
+    position: relative;
+    margin: 35px 0;
+    padding: 0;
+    line-height: 25px;
+    display: block;
+margin-top:32px;
+ }
+  .sweet-alert p {
+    color: #797979;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 300;
+    position: relative;
+    text-align: inherit;
+    float: none;
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    
+ }
+.sweet-alert button {
+  margin-top: -60px;
+ /* width: 20px;
+  text-align: center;*/
+}
+
+.sweet-alert .sa-icon.sa-success .sa-placeholder{
+width:40px;
+height:40px;
+left: 12px;
+top: 1px;
+border-color: #a5dc86;
+
+}
+.sweet-alert .sa-icon.sa-warning{
+  width : 40px;
+  height : 40px;
+margin-top:-10px;
+}
+.sweet-alert .sa-icon.sa-warning .sa-body
+{
+height:14px;
+}
+.sweet-alert .sa-icon.sa-warning .sa-dot
+{
+height:4px;
+}
+
+
+.sweet-alert .sa-confirm-button-container {
+
+padding-right: 15px;
+padding-left: 15px;
+}
+.sweet-alert button
+{
+font-size: 17px;
+font-weight: 400;
+border-radius: 15px;
+padding: 0px 15px;
+
+}
+.sweet-alert .sa-icon.sa-success {
+    border-color: white;
+}
+.sweet-alert .sa-icon {
+    width: 80px;
+    height: 80px;  
+    margin: -15px auto;
+    
+}
+.sweet-alert .sa-icon.sa-success .sa-fix {
+    width: 1px;
+    height: 600px;
+    background-color: white;
+}
+
+
+.sweet-alert .sa-icon.sa-success .sa-line.sa-tip {
+    width: 16px;
+    left: 21px;
+    top: 25px;
+}
+.sweet-alert .sa-icon.sa-success .sa-line.sa-long {
+    width: 22px;
+    right: 28px;
+    top: 22px;
+}
+
+
+.colorRed {
+color:red;
+font-weight: bold;
+}
+
+
+
+  </style>
+  
+    
+ 
+
+
+</head>
+<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+<body>
+<div class="wrapper" id="page-wrapper">
+ 
+ <header id="header" class="navbar-static-top style2"  ng-if ="!ticketheader">
+            
+            <div class="topnav hidden-xs">
+                <div class="container">
+                    <ul class="quick-menu pull-left">
+                    <li ng-if="mainheader"><a href="">  <img  src="images/logo/logo.png" alt="Boletobus Online Booking"></a></li>
+                    
+                   
+                        <li class="ribbon" ng-if="login"><a href="#">{{myAccountLabel}}</a>
+                           <ul class="menu mini">
+                                <li><a ui-sref="dashboard" title="My Dashboard" >{{myDashboardLabel}}</a></li>
+                                <li><a ui-sref="destinations" title="All Routes" >{{allDestinationsLabel}}</a></li> 
+                                <li><a ng-click="logout()" title="Logout" >{{LogoutLabel}}</a></li> 
+                            </ul>
+                        </li>
+                   
+                        
+                         <li class="ribbon"><a  ng-click="languageChanged('en')">{{sellang}}</a>
+                           <ul class="menu mini">
+                                <li class="active"><a  title="English" ng-click="languageChanged('en')">English</a></li>
+                                <li><a  title="Spanish" ng-click="languageChanged('sp')">Spanish</a></li> 
+                                
+                            </ul>
+                        </li>
+                       
+                       
+                        
+                          <li >
+                            <a href="#print-ticket" class="soap-popupbox" >{{printticketlabel}}</a>
+                            
+                        </li>
+
+                    </ul>
+                    <ul class="quick-menu pull-right">
+
+                        <li ng-if="!login"><a href="#travelo-login" class="soap-popupbox" ng-bind="loginLabel">LOGIN</a></li>
+                        <li><a href="#travelo-signup" class="soap-popupbox" ng-bind="signupLabel">SIGNUP</a></li>
+                      
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-header">
+                
+                <a href="#mobile-menu-01"  target="_self" data-toggle="collapse" class="mobile-menu-toggle">
+                    Mobile Menu Toggle
+                </a>
+                
+                 <div class="container">
+                    <h1 class="logo navbar-brand" id="mainheader1" style="display:none">
+                        <a  title="bukate - home">
+                            <img src="images/logo.png" alt="Bukate Online Booking">
+                        </a>
+
+                    </h1>
+                    <h1 class="logo navbar-brand hidden-md hidden-lg" id="mainheader1" ng-if="mainheader">
+                        <a title="bukate - home">
+                            <img src="images/logo.png" alt="Bukate Online Booking">
+                        </a>
+</h1>
+
+
+                    <div class="header-search col-sm-offset-4 col-md-offset-2 hidden-mobile" id="mainheader" style="display:none">
+                        <form method="post" role="form">
+                            <div class="col-xs-6">
+                            <div class="col-xs-6">
+                                <div class="selector style1 guest">
+                                                    <select class="full-width" id="frolocid"    ng-model="flocid" ng-change="onfromlocchange(flocid)"  >
+                                                    <option  value="-1" ng-bind="fromLocationLabel"> From Location</option>
+                                                    <option data-ng-repeat="cnt in allfromloc" value="{{cnt.START_POINT}}" ng-selected="fromlocid==cnt.START_POINT">{{cnt.NAME}}</option>
+                                                    </select><span class="custom-select white-bg full-width" >{{travelfromlocdesc}}</span>
+
+                                                        </div>
+
+
+                                       </div>
+                           <div class="col-xs-6">
+                                <div class="selector style1 guest">
+                                                          <select class="full-width" id="torlocid"   ng-model="tolocid" ng-change="toLocchange(tolocid)"
+                                                            >
+                                                    <option  value="-1"  ng-bind="toLocationLabel"> To Location</option>
+                                                    <option data-ng-repeat="cnt in alltoloc" value="{{cnt.DROP_POINT}}" ng-selected="tolocid==cnt.DROP_POINT">{{cnt.NAME}}</option>
+                                                    </select><span class="custom-select white-bg full-width" >{{traveltolocdesc}}</span>
+                                                        </div>
+                                       </div>
+
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="col-xs-3">
+                                    <div class="datepicker-wrap">
+                                                    <input type="text" id ="trdate" ng-model="datetr"   class="input-text full-width" placeholder="{{fromDateplaceholder}}"  ng-change="fromdatechange()"/>
+
+                                                </div>
+                                </div>
+                                <div class="col-xs-3">
+                                <div class="datepicker-wrap">
+                                                    <input type="text" id="rtdate" ng-model="datert"  class="input-text full-width" placeholder="{{toDateplaceholder}}" ng-change="returndatechange()" />
+                                                </div>
+                                    <!--<div class="datepicker-wrap">
+                                        <input type="text" class="input-text white-bg full-width check-out hasDatepicker" name="date_to" placeholder="Check Out" id="dp1509361942699"><img class="ui-datepicker-trigger" src="images/icon/blank.png" alt="" title="">
+                                    </div>-->
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="selector style1 guest">
+                                        <select class="full-width white-bg" id="noofpassenger" ng-model="noofpassen" ng-change="seatschanged()">
+                                            <option value="1" ng-bind="noOfPassengers1Label">1 Passegner</option>
+                                            <option value="2" ng-bind="noOfPassengers2Label">2 Passenger</option>
+                                            <option value="3" ng-bind="noOfPassengers3Label">3 Passenger</option>
+                                            <option value="4" ng-bind="noOfPassengers4Label">4 Passenger</option>
+                                             <option value="5" ng-bind="noOfPassengers5Label">5 Passenger</option>
+                                             <option value="6" ng-bind="noOfPassengers6Label">6 Passenger</option>
+                                             
+                                        </select><span class="custom-select white-bg full-width">{{seatsdesc}} Passenger</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <button type="submit" ng-click="routessearch()" class="btn-medium uppercase full-width" ng-bind="searchLabel">search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <nav id="mobile-menu-01" class="mobile-menu collapse">
+                    <ul id="mobile-primary-menu" class="menu">
+                        <li >
+                            <a href="#slider">Home</a>
+                         
+                        </li>
+                        <li ng-if="!login" >
+                            <a href="#travelo-login" class="soap-popupbox" ng-bind="loginLabel">login</a>
+                         
+                        </li>
+                        <li >
+                            <a href="#travelo-signup" class="soap-popupbox" ng-bind="signupLabel">Sign Up</a>
+                         
+                        </li>
+                      
+                        <li class="menu-item-has-children" ng-if="login" >
+                            <a >{{myAccountLabel}}</a>
+                            <ul>
+                               <li><a ui-sref="dashboard" >{{myDashboardLabel}}</a></li>
+                                <li><a ui-sref="destinations">{{allDestinationsLabel}}</a></li> 
+                                <li><a ng-click="logout()">{{LogoutLabel}}</a></li> 
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a ng-click="languageChanged('en')">{{sellang}}</a>
+                            <ul>
+                                <li class="active"><a  title="English" ng-click="languageChanged('en')">English</a></li>
+                                <li><a  title="Spanish" ng-click="languageChanged('sp')">Spanish</a></li> 
+                                
+                            </ul>
+                        </li>
+
+                        <li >
+                            <a href="#print-ticket" class="soap-popupbox">{{printticketlabel}}</a>
+                         
+                        </li>
+                       
+                    </ul>
+                  
+                </nav>
+            </div>
+            <div id="travelo-signup" class="travelo-signup-box travelo-box">
+               
+                <div class="simple-signup">
+                    <div class="text-center signup-email-section">
+                        <a href="#" class="signup-email"><i class="soap-icon-letter"></i><span ng-bind="sgLabel">Sign up with Email or mobile number</span></a>
+                    </div>
+                    <p class="description" ng-bind="bLabel">By signing up, I agree to Boletobus Terms of Service, Privacy Policy, Guest Refund olicy, and Host Guarantee Terms.</p>
+                </div>
+                <div class="email-signup">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" id="firstname" ng-model="fname" maxlength="20" class="input-text full-width" placeholder="first name">
+                            <span color="redbold" ng-if="invalidfname" ng-bind="invalidfnameValid" class="colorRed"> Please enter first name </span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="lastname" maxlength="20" class="input-text full-width" placeholder="last name">
+                             <span color="redbold" ng-if="invalidlname" ng-bind="invalidlnameValid" class="colorRed"> Please enter last name </span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="emailid" maxlength="30" class="input-text full-width" placeholder="email address">
+                             <span color="redbold" ng-if="invalidemail"ng-bind="invalidemailValid" class="colorRed"> Please enter a valid email id </span>
+                        </div>
+                         <div class="form-group">
+                            <input type="text" id="mobileno" maxlength="10" class="input-text full-width" placeholder="mobile number" onlynumber>
+                             <span color="redbold" ng-if="invalidmobile" ng-bind="invalidmobileValid" class="colorRed"> Please enter a valid mobile number </span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="password" maxlength="20" class="input-text full-width" placeholder="password">
+                             <span color="redbold" ng-if="invalidpassword"ng-bind="invalidpasswordValid" class="colorRed"> Please enter password </span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="confirmpassword" maxlength="20" class="input-text full-width" placeholder="confirm password">
+                             <span color="redbold" ng-if="invalidconfirm" ng-bind="invalidconfirmValid" class="colorRed"> Password and confirm password is not same </span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <p class="description" ng-bind="bysLabel">By signing up, I agree to Boletobus's Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms.</p>
+                        </div>
+                        <button type="submit" ng-click="signup()" class="btn-mediumlogin" ng-bind="signupLabel">SIGNUP</button>
+		<button type="button"  class="btn-mediumsign" onclick="jQuery('#soap-popupbox').css('display', 'none');">CLOSE</button>
+
+
+
+
+                    </form>
+                </div>
+                <div class="seperator"></div>
+                <p><span ng-bind="aLabel">Already a Boletobus member? </span><span><a href="#travelo-login" class="goto-login soap-popupbox" ng-bind="loginPopupLabel">Login</a></span></p>
+            </div>
+            <div id="travelo-login" class="travelo-login-box travelo-box">
+                
+                <div class="seperator"><label ng-bind="loginLabel">Login</label></div>
+                <form>
+                    <div class="form-group">
+                        <input type="text" id="loginemail" class="input-text full-width" placeholder="email address or mobile no.">
+                        <span color="redbold" ng-if="logininvalidemail" ng-bind="emailValidError" class="colorRed"> Please enter a valid email </span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password1" class="input-text full-width" placeholder="password">
+                         <span color="redbold" ng-if="logininvalidpassword" ng-bind="pwdValidError" class="colorRed"> Please enter password</span>
+                    </div>
+                    <div class="form-group">
+                        <a href="#forgot-password" class="forgot-password pull-right soap-popupbox" ng-bind="forLabel">Forgot password?</a>
+                       
+                    </div>
+                </form>
+                <div class="seperator"></div>
+                <button type="submit" ng-click="userlogin()" class="btn-mediumlogin" ng-bind="loginLabel">LOGIN</button>
+		<button type="button"  class="btn-mediumclose" onclick="jQuery('#soap-popupbox').css('display', 'none');">CLOSE</button>
+
+
+		
+				
+                <div class="seperator"></div>
+                <p><span ng-bind="doLabel"> Don't have an account? </span><span><a href="#travelo-signup" class="goto-signup soap-popupbox" ng-bind="signupPopupLabel">Sign up</a></span></p>
+            </div>
+
+
+              <div id="print-ticket" class="travelo-login-box travelo-box">
+                
+             
+			     <div class="seperator"><label>{{printticketlabel}} </label></div>
+                <form>
+                    <div class="form-group">
+                        <input type="text" id="bookingid" class="input-text full-width" placeholder="{{bookingIDplaceholder}}">
+                        <span color="redbold" ng-if="invalidbookingid" class="colorRed" ng-bind="bookingIdValidError"> Please enter booking ID </span>
+                    </div>
+                
+                </form>
+                <div class="seperator"></div>
+            
+               <p><button type="submit" ng-click="printticket()" class="btn-mediumlogin"> {{Continuelabel}}</button></p>
+<button type="button"  class="btn-mediumforgot" onclick="jQuery('#soap-popupbox').css('display', 'none');">CLOSE</button>
+
+                <div class="seperator"></div>
+
+                
+            </div>
+
+
+
+              <div id="forgot-password" class="travelo-login-box travelo-box">
+                
+             
+                <div class="seperator"><label>{{forLabel}} </label></div>
+                <form>
+                    <div class="form-group">
+                        <input type="text" id="semailid" ng-model="emailid" class="input-text full-width" placeholder="{{emailplaceholder}}">
+                         <span color="redbold" ng-if="invalidemailid" class="colorRed"> Please enter email id </span>
+                       
+                    </div>
+                
+                </form>
+                <div class="seperator"></div>
+            
+               <p><button type="submit" ng-click="sendmail()" class="btn-mediumlogin"> {{Continuelabel}}</button></p>
+		<button type="button"  class="btn-mediumforgot" onclick="jQuery('#soap-popupbox').css('display', 'none');">CLOSE</button>
+
+
+                <div class="seperator"></div>
+                
+            </div>
+
+            
+
+        </header>
+         <div id ="headerid" style="display:none">
+      <section id="content" class="slideshow-bg"  >
+            <div id="slideshow">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div class="slidebg" style="background-image: url('images/background/slider-01.jpg');"></div>
+                        </li>
+                        <li>
+                            <div class="slidebg" style="background-image: url('images/background/slider-02.jpg');"></div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="container">
+
+
+                <div id="main" >
+
+
+                    <h1 class="page-title" style="padding-left:70px; !important" ng-bind="pageTitleLabel">Buy your Bus Ticket to the interior of Panama </h1>
+                    <h6 class="page-description col-md-10" style ="font-size: 1.5em;padding-left:150px; !important "  ng-bind="pageSubTitleLabel">Avoid long lines and book online from the comfort of your home, 
+your office or your phone</h6>
+
+                    <div class=" style2" style="padding-left:100px; !important">
+                        <div class="search-box">
+                            
+                            
+                            <div class="search-tab-content">
+                                <div class="tab-pane fade active in" id="hotels-tab">
+                                    <form  method="post">
+                                         <div class="row">
+                                            <div class="form-group col-sm-6 col-md-4">
+                                             <div class="row">
+                                                    <div class="col-xs-6">
+                                                        <div class="selector">
+                                                    <select class="full-width" id="travellocid"    ng-model="fromlocid" ng-change="onfromlocchange(fromlocid)"  >
+                                                    <option  value="-1" selected  ng-bind="fromLocationLabel"> From Location</option>
+                                                    <option data-ng-repeat="cnt in allfromloc" value="{{cnt.START_POINT}}" ng-selected="fromlocid==cnt.START_POINT">{{cnt.NAME}}</option>
+                                                    </select><span class="custom-select white-bg full-width" ng-bind="fromLocationLabel">From Location</span>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <div class="selector">
+                                                          <select class="full-width" id="travelltolocid"   ng-model="tolocid"  >
+                                                           
+                                                    <option  value="-1" ng-bind="toLocationLabel"  > To Location</option>
+                                                    <option data-ng-repeat="cnt in alltoloc" value="{{cnt.DROP_POINT}}" ng-selected="tolocid==cnt.DROP_POINT">{{cnt.NAME}}</option>
+                                                    </select><span class="custom-select white-bg full-width" ng-bind="toLocationLabel">To Location</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+                                            </div>
+                                            <div class="form-group col-sm-6 col-md-3">
+                                                <div class="row">
+                                                    <div class="col-xs-6">
+                                                        <div class="datepicker-wrap">
+                                                            <input type="text" id="frdate" ng-model="fromdate" class="input-text full-width" placeholder="{{fromDateplaceholder}}" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <div class="datepicker-wrap">
+                                                            <input type="text" id="retdate" class="input-text full-width" placeholder="{{toDateplaceholder}}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-5">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <div class="selector">
+                                                            <select class="full-width" id="noofpass">
+                                                              
+                                                                <option value="1" ng-bind="noOfPassengers1Label">1 Passenger</option>
+                                                                <option value="2" ng-bind="noOfPassengers2Label">2 Passenger</option>
+                                                                <option value="3" ng-bind="noOfPassengers3Label">3 Passenger</option>
+                                                                <option value="4" ng-bind="noOfPassengers4Label">4 Passenger</option>
+                                                                <option value="5" ng-bind="noOfPassengers5Label">5 Passenger</option>
+                                                                <option value="6" ng-bind="noOfPassengers6Label">6 Passenger</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-xs-4">
+                                                        <button type="button" ng-click="searchroutes()"  ng-bind="searchnowLabel" class="full-width">SEARCH NOW</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                              
+                               
+                                
+                              
+                            </div>
+                        </div>
+                    </div>
+
+                     <h1 class="page-title"  style ="font-size: 1.5em;padding-left:490px; !important " ng-bind="safeLabel">SAFE - SECURE -FAST  </h1>
+                     <h1 class="page-title" style="padding-left:500px; !important"><a
+href="">
+<img src="https://secure.paguelofacil.com/images/botones/Boton_De_Pago_1_100.png" height="63" width="100" border="0" /></a> </h1>
+                </div>
+            </div>
+           
+            
+        </section> </div>
+  
+
+
+
+
+
+
+
+
+
+
+ 
+   <div growl ></div>
+    <div class="content-view container-fluid" ui-view>
+
+    </div>  
+
+
+  <!-- /.content-wrapper -->
+   <footer id="footer" ng-if ="!ticketheader">
+            <div class="footer-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <h2 ng-bind="discoverlabel">Discover</h2>
+                            <ul class="discover triangle hover row">
+                                <li class="col-xs-6"><a ui-sref ="about" ng-bind="AboutLabel">About</a></li>
+                                <li class="col-xs-6"><a ui-sref="travelcondition" ng-bind="TravelConditionsLabel">Travel Conditions</a></li>
+                                <li class="col-xs-6"><a ui-sref="privacypolicy" ng-bind="PrivacyPolicyLabel">Privacy Policy</a></li>
+                                <li class="col-xs-6"><a ui-sref="frequentquestions" ng-bind="FrequentQuestionsLabel">Frequent Questions</a></li>
+                                <li class="col-xs-6"><a ui-sref="termsconditions" ng-bind="TermsConditionsLabel">Terms & Conditions</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <h2 ng-bind="ContactUsLabel">Contact Us</h2>
+                            <ul class="travel-news">
+                                <li>
+                                    <div class="thumb">
+                                        <a href="#">
+                                            <img src="http://placehold.it/63x63" alt="" width="63" height="63" />
+                                        </a>
+                                    </div>
+                                    <div class="description">
+                                        <h5 class="s-title" ng-bind="AddressLabel"><a href="#">Address </a></h5>
+                                        <p ng-bind="AddressparagraphLabel">65 San Francisco Street PH Diamond Tower, Panama</p>
+                                        
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-2">
+                            <h2 ng-bind="MailingListLabel">Mailing List</h2>
+                            <p ng-bind="MailingListparagraphLabel">Enter your email address to find out about the latest BoletoBus news, new destinations and promotions right in your inbox..</p>
+                            <br />
+                            <div class="icon-check">
+                                <input type="text" class="input-text full-width" placeholder="{{youremailplaceholder}}"  />
+                            </div>
+                            <br />
+                            <span ng-bind="privacyLabel">We respect your privacy</span>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <h2 ng-bind="AboutBoletobusLabel">About Bukate</h2>
+                            <p ng-bind="AboutBoletobusparagraphLabel">Bukate is the first online bus ticket booking platform in Panama. Passengers will be able to look up for routes, compare the different schedules, and secure their seat before arriving.....</p>
+                            <br>
+                            <address class="contact-details">
+							<h2>Nitesh Mayani</h2>
+                                <span class="contact-phone"><i class="soap-icon-phone"></i> +1 850 980 4950</span><br/>
+								<span class="contact-phone"><i class="soap-icon-phone"></i>+507 6241 2149</span>
+                                
+                                <a href="#" class="contact-email" style="margin-left:-20px;">niteshmayani95@gmail.com</a>
+                            </address>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom gray-area">
+                <div class="container">
+                    <div class="logo pull-left">
+                        <a href="index.html" title="Boletobus - Online Booking">
+                            <img src="images/logo.png"  />
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <a id="back-to-top" href="#" class="animated" data-animation-type="bounce"><i class="soap-icon-longarrow-up circle"></i></a>
+                    </div>
+                    <div class="copyright pull-right">
+                        <p>&copy; 2017  inmicros.com</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+          </div>
+
+  <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.noconflict.js"></script>
+    <script type="text/javascript" src="js/modernizr.2.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.placeholder.js"></script>
+    <script src="../js/jquery.seat-charts.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.12.0/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="../js/angular/angular.min.js"></script>
+    <script src="../js/angular/angular.js"></script>
+    <script src="../js/angular/angular-resource.js"></script>
+    <script src="../js/angular/angular-route.js"></script>
+    <script src="../js/angular/angular-ui-router.min.js"></script>
+      <script src="../js/angular/angular-growl.min.js"></script>
+    <script src="../js/charts/chart.js"></script>
+    <script src="../js/charts/angular-chart.js"></script>
+    <script src="../js/angular-datepicker.js"></script>
+    <!--<script src="../js/this.js"></script>-->
+    
+    <script src="../js/angularjs-dropdown-multiselect.min.js"></script>
+    
+       
+     <script src="../js/ngPrint.js"></script>
+
+
+    <script type="text/javascript" src="../js/ng-file-upload/dist/ng-file-upload.min.js"></script>
+    <script type="text/javascript" src="../js/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+   
+    
+    <!-- Twitter Bootstrap -->
+    <script src="../js/ui-bootstrap-tpls.js"></script>
+    
+     <script src="../../bootstrap/js/bootstrap.min.js"></script>
+
+    
+    
+    <!-- load revolution slider scripts -->
+    <script type="text/javascript" src="components/revolution_slider/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="components/revolution_slider/js/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- Flex Slider -->
+    <script type="text/javascript" src="components/flexslider/jquery.flexslider-min.js"></script>
+    
+    <!-- load BXSlider scripts -->
+    <script type="text/javascript" src="components/jquery.bxslider/jquery.bxslider.min.js"></script>
+    
+    <!-- parallax -->
+    <script type="text/javascript" src="js/jquery.stellar.min.js"></script>
+    
+    <!-- waypoint -->
+    <script type="text/javascript" src="js/waypoints.min.js"></script>
+
+    <!-- load page Javascript -->
+    <script type="text/javascript" src="js/theme-scripts.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+
+    
+    <script type="text/javascript">
+        tjq(".flexslider").flexslider({
+            animation: "fade",
+            controlNav: false,
+            animationLoop: true,
+            directionNav: false,
+            slideshow: true,
+            slideshowSpeed: 5000
+        });
+
+           tjq(document).ready(function() {
+            tjq("#profile .edit-profile-btn").click(function(e) {
+                e.preventDefault();
+                tjq(".view-profile").fadeOut();
+                tjq(".edit-profile").fadeIn();
+            });
+
+            setTimeout(function() {
+                tjq(".notification-area").append('<div class="info-box block"><span class="close"></span><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ab quis a dolorem, placeat eos doloribus esse repellendus quasi libero illum dolore. Esse minima voluptas magni impedit, iusto, obcaecati dignissimos.</p></div>');
+            }, 10000);
+        });
+        tjq('a[href="#profile"]').on('shown.bs.tab', function (e) {
+            tjq(".view-profile").show();
+            tjq(".edit-profile").hide();
+        });
+    </script>
+
+<!-- AdminLTE for demo purposes -->
+
+ <!--<script src="../min/app/app.js"></script>-->
+
+
+<script src="../js/ngStorage.min.js"></script>
+    <script src="../js/dirPagination.js"></script>
+    
+    <script src="../app/app.js"></script>
+    <script src="../app/translate.js"></script>
+ <script src="../app/controllers/sliderController.js"></script>
+  <script src="../app/controllers/vehicleController.js"></script>
+ <script src="../app/controllers/bookingController.js"></script>
+ <script src="../app/controllers/confirmationController.js"></script>
+ <script src="../app/controllers/printticketController.js"></script>
+  <script src="../app/controllers/destinationController.js"></script>
+  <script src="../app/controllers/dashboardController.js"></script>
+  <script src="../app/controllers/profileController.js"></script>
+  <script src="../app/controllers/mybookingsController.js"></script>
+  <script src="../app/controllers/settingsController.js"></script>
+  <script src="../app/controllers/staticdataController.js"></script>
+   <script src="../app/controllers/vehicle1Controller.js"></script>
+   <script src="../app/controllers/seatController.js"></script>
+   <script src="../app/controllers/errorController.js"></script>
+  
+ 
+   <script src="../app/services/bankManagementfactory.js"></script>
+     <script src="../app/services/CitizenFactory.js"></script>
+      <script src="../app/services/commonfactory.js"></script>
+    <script src="../app/services/graphfactory.js"></script>
+    <script src="../app/services/myrequestfactory.js"></script>
+    <script src="../app/services/userfactory.js"></script>
+     <script src="../app/services/dashboardfactory.js"></script>
+    <script src="../app/services/govtdashboardfactory.js"></script>
+    <script src="../app/services/authenticationfactory.js"></script>
+
+
+    
+    
+</body>
+</html>

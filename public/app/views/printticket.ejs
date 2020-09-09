@@ -1,0 +1,204 @@
+ <div id="mydiv">
+    <img src="images/spinner.gif" class="ajax-loader"/>
+</div>
+     
+        <section id="content" class="gray-area">
+            <div class="container">
+                <div class="row"><br>
+                    <div class="col-sm-8 col-md-9">
+                        <div class="booking-information travelo-box">
+                            <h1 class="logo navbar-brand" ng-if="!mainheader">
+                       
+                            <img src="images/logo.png" alt="">
+                     
+                      
+                    </h1>
+                           <br><br><br><br>
+                            <h2 ng-bind="eticketLabel">e-ticket</h2>
+                            <hr />
+                           <ul class="social-icons clearfix">
+                                <li class="twitter "><a style="width:100px;" ng-click ="printticket()" title="print" data-toggle="tooltip" ng-bind="printLabel">Print</a></li>
+                                <li class="googleplus"><a  style="width:100px;"title="home" href="#slider " data-toggle="tooltip" ng-bind="hometLabel">Home</a></li>
+                                 
+                               
+                            </ul>
+
+
+                            <hr />
+
+                            <h2 ng-bind="travelinfoLabel">Traveler Information</h2>
+                              <dl class="term-description">
+                                <dt ng-bind="bkngnumLabel">Booking number:</dt><dd>{{bookingdetails[0].BOOKING_ID}}</dd>
+                                <dt ng-bind="bkngstatusLabel">Booking status:</dt><dd><b>{{bookingdetails[0].BOOKING_STATUS}}</b></dd>
+                                 <dt ng-bind="bkngdateLabel">Booking Date:</dt><dd>{{bookingdetails[0].BKDATE}}</dd>
+                                <dt ng-bind="usernameLabel">User name:</dt><dd>{{bookingdetails[0].CUSTOMERNAME}}</dd>
+                                <dt ng-bind="emailLabel">E-mail address:</dt><dd>{{bookingdetails[0].EMAIL_ID}}</dd>
+                                <dt ng-bind="streetLabel">Street Address and number:</dt><dd>{{bookingdetails[0].BOOKINGADDRESS}}</dd>
+                                 <dt ng-bind="documentLabel" ng-if="bookingdetails[0].DOCUMENT !="-1"">Document:</dt><dd ng-if="bookingdetails[0].DOCUMENT !="-1"">{{bookingdetails[0].DOCUMENT}}</dd>
+                                <dt ng-bind="documentnoLabel" ng-if="bookingdetails[0].DOCUMENT_NUMBER !=null">Document Number:</dt><dd>{{bookingdetails[0].DOCUMENT_NUMBER}}</dd>
+                                <dt ng-bind="phoneLabel">Phone:</dt><dd>+{{bookingdetails[0].COUNTRY_CODE}} {{bookingdetails[0].PHONE}} </dd>
+
+                            </dl>
+                            <hr />
+
+                             <h2 ng-bind="tktinfoLabel">Ticket Information</h2>
+                              <hr>
+                               <div class="form-group row">
+                                 <div class="col-sm-6 col-md-5">
+                                            <label style="color:#01b7f2;" ng-bind="routeLabel" >Route : </label>
+                                      <!--  <p ng-bind="dprtfromLabel">  Departure from {{bookingdetails[0].FROMCITYNAME}} to {{bookingdetails[0].TOCITYNAME}} </p> -->
+									    <p>  {{dprtfromLabel}} {{bookingdetails[0].FROMCITYNAME}} {{toLabel}} {{bookingdetails[0].TOCITYNAME}} </p>
+                                        </div>
+                               </div>
+
+                               <div class="form-group row">
+                                        <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;" ng-bind="tktnoLabel">Ticket Number :</label>
+                                          <p> {{ticketdetails[0].TICKET_ID}} </p>
+                                        </div>
+                                        <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;" ng-bind="depttimeLabel">Departure Time:</label>
+                                          <p> {{ticketdetails[0].DEPARTURE_TIME}} <p>{{ticketdetails[0].DEPARTURE_DATE}} </p> 
+                                        </div>
+                                         <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;" ng-bind="arvltimeLabel">Arrival Time:</label>
+                                            <p>{{ticketdetails[0].ARRIVAL_TIME}} <p>{{ticketdetails[0].ARRIVAL_DATE}}  </p>
+                                        </div>
+                                         <div class="col-sm-6 col-md-2" ng-if="ticketdetails[0].SEAT_NUMBER ==0">
+                                            <label style="color:#01b7f2;" ng-bind="cnfrmseatsLabel">Confirmed Seats:</label>
+                                            <p> {{ticketdetails[0].TOTAL_TICKETS}}</p>
+                                        </div>
+                                         <div class="col-sm-3 col-md-2" ng-if="ticketdetails[0].SEAT_NUMBER !=0">
+                                            <label style="color:#01b7f2;">Seat Numbers</label>
+                                            <p> {{ticketdetails[0].SEAT_NUMBER}}</p>
+                                        </div>
+                                         <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;" ng-bind="traveldateLabel">Travel Date:</label>
+                                           <p> {{ticketdetails[0].TRAVELDATE}}</p>
+                                        </div>
+                                        <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;" ng-bind="vehLabel">Vehicle Number:</label>
+                                           <p> {{ticketdetails[0].VEH_REG_NUMBER}}</p>
+                                        </div>
+                                    </div>
+
+                                     <h2 id="pickupdropLabel">Your Pick and Drop points</h2>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 col-md-3">
+                                            <label id="pickupLabel">Pickup Point</label>
+                                            <div >
+                                             {{ticketdetails[0].PICKUP_POINT_NAME}}
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+                                            <label id="dropLabel">Drop Point</label>
+                                            <div >
+                                                {{ticketdetails[0].DROP_POINT_NAME}}
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+
+
+                                    <div class="form-group row" ng-if ="ticketdetails.length==2">
+                                        <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Ticket Number : </label>
+                                          <p> {{ticketdetails[1].TICKET_ID}} </p>
+                                        </div>
+                                        <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Departure Time:</label>
+                                         <p>  {{ticketdetails[1].DEPARTURE_TIME}} <p>{{ticketdetails[1].DEPARTURE_DATE}} </p> 
+                                        </div>
+                                         <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Arrival Time:</label>
+                                          <p>  {{ticketdetails[1].ARRIVAL_TIME}} <p>{{ticketdetails[1].ARRIVAL_DATE}}  </p>
+                                        </div>
+                                          <div class="col-sm-6 col-md-2" ng-if="ticketdetails[0].SEAT_NUMBER ==0">
+                                            <label style="color:#01b7f2;" ng-bind="cnfrmseatsLabel">Confirmed Seats:</label>
+                                            <p> {{ticketdetails[0].TOTAL_TICKETS}}</p>
+                                        </div>
+                                         <div class="col-sm-3 col-md-2" ng-if="ticketdetails[0].SEAT_NUMBER !=0">
+                                            <label style="color:#01b7f2;">Seat Numbers</label>
+                                            <p> {{ticketdetails[0].SEAT_NUMBER}}</p>
+                                        </div>
+                                         <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Travel Date:</label>
+                                            <p>{{ticketdetails[1].TRAVELDATE}}</p>
+                                        </div>
+                                        <div class="col-sm-6 col-md-2">
+                                            <label style="color:#01b7f2;">Vehicle Number:</label>
+                                           <p> {{ticketdetails[0].VEH_REG_NUMBER}}</p>
+                                        </div>
+                                    </div>
+
+
+                              </hr>
+                              <div  ng-if ="ticketdetails.length==2">
+                                       
+                                     <h2 id="pickupdropLabel">Your Pick and Drop points</h2>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 col-md-3">
+                                            <label id="pickupLabel">Pickup Point</label>
+                                            <div >
+                                             {{ticketdetails[1].PICKUP_POINT_NAME}}
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-6 col-md-3">
+                                            <label id="dropLabel">Drop Point</label>
+                                            <div >
+                                                {{ticketdetails[1].DROP_POINT_NAME}}
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    </div>
+
+                              </hr>
+
+                              </hr>
+
+                            <h2 ng-bind="addinfoLabel">Additional Information</h2>
+                            <p>Praesent dolor lectus, rutrum sit amet risus vitae, imperdiet cursus neque. Nulla tempor nec lorem eu suscipit. Donec dignissim lectus a nunc molestie consectetur. Nulla eu urna in nisi adipiscing placerat. Nam vel scelerisque magna. Donec justo urna, posuere ut dictum quis.</p>
+                            <br />
+                            <p class="red-color" ng-bind="payLabel">Payment is made by Credit Card Via Paypal.</p>
+                            <hr />
+                            
+                        </div>
+                    </div>
+                    <div class="sidebar col-sm-4 col-md-3">
+                        <div class="travelo-box contact-box">
+                            <h4 ng-bind="needLabel">Need Boletobus Help?</h4>
+                            <p ng-bind="weLabel">We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
+                            <address class="contact-details">
+                                <span class="contact-phone" ng-bind="helloLabel"><i class="soap-icon-phone" ></i> 1-800-123-HELLO</span>
+                                <br>
+                                <a class="contact-email" href="#">hola@bukate.com</a>
+                            </address>
+                        </div>
+                        <div class="travelo-box book-with-us-box">
+                            <h4 ng-bind="whybookLabel">Why Book with us?</h4>
+                            <ul>
+                                <li>
+                                    <i class="soap-icon-hotel-1 circle"></i>
+                                    <h5 class="title" ng-bind="routesLabel"><a href="#">135,00+ Routes</a></h5>
+                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
+                                </li>
+                                <li>
+                                    <i class="soap-icon-savings circle"></i>
+                                    <h5 class="title" ng-bind="lowrateLabel"><a href="#">Low Rates &amp; Savings</a></h5>
+                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
+                                </li>
+                                <li>
+                                    <i class="soap-icon-support circle"></i>
+                                    <h5 class="title" ng-bind="suportLabel"><a href="#">Excellent Support</a></h5>
+                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

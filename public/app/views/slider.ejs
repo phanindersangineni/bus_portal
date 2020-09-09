@@ -1,0 +1,138 @@
+<div id="mydiv">
+    <img src="images/spinner.gif" class="ajax-loader"/>
+</div>
+
+
+<section id="content">
+            
+
+            <div class="container section">
+                <h2 ng-bind="popularRoutesLabel" >THE MOST POPULAR ROUTES</h2>
+                <div class="row image-box listing-style1 flight">
+                <div ng-repeat ="top in allpopularroutes">
+                    <div class="col-sm-6 col-md-3">
+                        <article class="box">
+                            <figure>
+                                <span><!--<img alt="" src="images/routes/post-03-370x280.jpg">-->
+                                <img alt="" style="width:300px; height:200px;" src="http://52.14.228.208:2000{{top.IMAGE_URL}}"></span>
+                            </figure>
+                            <div class="details">
+                                <span class="price"><small><span ng-bind="avgpersonLabel">avg/person</span> </small>${{top.DURATION}}</span>
+                                <h4 class="box-title">{{top.ROUTE_NAME}}</h4>
+                            
+                               
+                                <div class="action" >
+                                    <a class="button btn-small yellow full-width" ng-click="getvehicles(top)" ng-bind="BooknowLabel">Book NOW</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    </div>
+                  
+                </div>
+
+            </div>
+             <div class="global-map-area section parallax" >
+                <div class="container description text-center">
+                    <h1 ng-bind="howboletoLabel">How Boletobus Works?</h1>
+                    <br>
+                    <div class="travelo-process">
+                        <img src="images/boleto.png" alt="">
+                        <div class="process first icon-box style12">
+                            <div class="details " >
+                                <h4 ng-bind="ExploreDestinationslabel">Explore Destinations</h4>
+                                
+                            </div>
+                            <div class="icon-wrapper"  >
+                                <i class="soap-icon-beach circle"></i>
+                            </div>
+                        </div>
+                        <div class="process second icon-box style12">
+                            <div class="icon-wrapper " >
+                                <i class="soap-icon-availability circle"></i>
+                            </div>
+                            <div class="details " >
+                                <h4 ng-bind="checkavailabilitylabel">Check Availability</h4>
+                                
+                            </div>
+                        </div>
+                        <div class="process third icon-box style12">
+                            <div class="icon-wrapper" >
+                                <i class="soap-icon-stories circle"></i>
+                            </div>
+                            <div class="details">
+                                <h4 ng-bind="Bookonlinelabel">Book Online</h4>
+                                
+                            </div>
+                        </div>
+                        <div class="process forth icon-box style12">
+                            <div class="details" >
+                                <h4 ng-bind="getreadyLabel">Get Ready to Fly</h4>
+                                
+                            </div>
+                            <div class="icon-wrapper animated">
+                                <i class="soap-icon-plane-left takeoff-effect1 circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<div class="container section">
+            <h2 ng-bind="ourPartnersLabel">Our Partners</h2>
+
+            <div class="investor-slideshow image-carousel style2 investor-list box" data-item-width="170" data-item-margin="30">
+                        <ul class="slides" >
+                            <li ng-repeat ="tops in allbuscompanies">
+                                <div class="travelo-box">
+                                    <a href="#"><img style="width:150px;height:150px; !important" src="http://52.14.228.208:2000{{tops.IMAGE_URL}}" alt=""></a>
+                                </div>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    </div>
+
+            <div class="global-map-area section parallax">
+                <div class="container description">
+                    <h1 class="text-center box" ng-bind="whyBoletobusLabel">Why Boletobus</h1>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="icon-box style8 ">
+                                <i class="soap-icon-hotel"></i>
+                                <h4 class="box-title" ng-bind="noofroutesLabel">135,000+ Routes</h4>
+                                <p class="description" >
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="icon-box style8 ">
+                                <i class="soap-icon-insurance"></i>
+                                <h4 class="box-title" ng-bind="lowrateLabel">Low Rates &amp; Top Savings</h4>
+                                <p class="description" >
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="icon-box style8">
+                                <i class="soap-icon-star-1"></i>
+                                <h4 class="box-title" ng-bind="realtravellersLabel">Reviewed by Real Travellers</h4>
+                                <p class="description">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="icon-box style8 ">
+                                <i class="soap-icon-support"></i>
+                                <h4 class="box-title" ng-bind="speaklangLabel">We Speak your Language</h4>
+                                <p class="description" >
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

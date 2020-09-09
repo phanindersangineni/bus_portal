@@ -1,0 +1,68 @@
+<div class="page-title-container">
+            <div class="container">
+                <div class="page-title pull-left">
+                    <h2 class="entry-title" style="font-size: 0.37em; !important" id="dashboardTittleLabel">My Dashboard</h2>
+                </div>
+                <ul class="breadcrumbs pull-right">
+                    <li><a ng-click="nagivatehome()" id="homeLabel">HOME</a></li>
+                    <li class="active"  id="dashboardLabel">dashboard</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <section id="content" class="gray-area">
+            <div class="container">
+                <div id=""><br>
+                    <div class="tab-container full-width-style arrow-left dashboard">
+                        <ul class="tabs">
+                            <li class=""><a data-toggle="tab" href="#dashboard"><i class="soap-icon-anchor circle"></i><h6 id="dashboardLabelTab">Dashboard</h6></a></li>
+                            <li class=""><a data-toggle="tab" href="#profile"><i class="soap-icon-user circle"></i><h6 id="profileLabel">Profile</h6></a></li>
+                            <li class=""><a data-toggle="tab" href="#mybooking"><i class="soap-icon-businessbag circle"></i><h6 
+                            id="mybookingLabel">My Booking</h6></a></li>
+                           
+                            <li class="active"><a data-toggle="tab" href="#settings"><i class="soap-icon-settings circle"></i><h6 id="settingsLabel">Settings</h6></a></li>
+                        </ul>
+                        <div class="tab-content">
+                           
+                            <div id="settings" class="tab-pane fade in active">
+                                <h2 id="accountsettingsLabel">Account Settings</h2>
+                                <h5 class="skin-color" id="Change_Your_PasswordLabel">Change Your Password</h5>
+                                <form>
+                                    <div class="row form-group">
+                                        <div class="col-xs-12 col-sm-6 col-md-4">
+										<label><span id="Old_PasswordLabel">Old Password</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                      <!--      <label id="Old_PasswordLabel">Old Password</label> -->
+                                            <input type="password" class="input-text full-width" id="oldpassword">
+                                            <span color="redbold" style="color:red;margin-left:5px;" id="invalidoldpassword" > </span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-xs-12 col-sm-6 col-md-4">
+										<label><span id="Enter_New_PasswordLabel">Enter New Password</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                         <!--   <label id="Enter_New_PasswordLabel">Enter New Password</label>  -->
+                                            <input type="password" class="input-text full-width" id="newpassword">
+                                            <span color="redbold" style="color:red;margin-left:5px;" id="invalidnewpassword" > </span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-xs-12 col-sm-6 col-md-4">
+										<label><span id="Confirm_New_passwordLabel">Confirm New password</span><span style="color:red;margin-left:3px;font-size:18px;">*</span></label>
+                                        <!--    <label id="Confirm_New_passwordLabel">Confirm New password</label> -->
+                                            <input type="password" class="input-text full-width" id="confirmnewpassword">
+                                            <span color="redbold" style="color:red;margin-left:5px;" id="invalidconfirmpassword" > </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn-medium" id="updatebutton">UPDATE PASSWORD</button>
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+        </section>
+
+      

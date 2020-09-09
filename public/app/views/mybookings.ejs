@@ -1,0 +1,66 @@
+<div id="mydiv">
+    <img src="images/spinner.gif" class="ajax-loader"/>
+</div>
+<div class="page-title-container">
+            <div class="container">
+                <div class="page-title pull-left">
+                    <h2 class="entry-title" style="font-size: 0.37em; !important" ng-bind="dashboardTittleLabel">My Dashboard</h2>
+                </div>
+                <ul class="breadcrumbs pull-right">
+                    <li><a ng-click="nagivatehome()" ng-bind="homeLabel">HOME</a></li>
+                    <li class="active" ng-bind="dashboardLabel">dashboard</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <section id="content" class="gray-area">
+            <div class="container">
+                <div id=""><br>
+                    <div class="tab-container full-width-style arrow-left dashboard">
+                        <ul class="tabs">
+                            <li class=""><a data-toggle="tab" href="#dashboard"><i class="soap-icon-anchor circle"></i><h6 ng-bind="dashboardLabel">Dashboard</h6></a></li>
+                            <li class=""><a data-toggle="tab" href="#profile"><i class="soap-icon-user circle"></i><h6 ng-bind="profileLabel">Profile</h6></a></li>
+                            <li class="active"><a data-toggle="tab" href="#mybooking"><i class="soap-icon-businessbag circle"></i><h6 
+							ng-bind="mybookingLabel">My Booking</h6></a></li>
+                           
+                            <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-settings circle"></i><h6 ng-bind="settingsLabel">Settings</h6></a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="booking" class="tab-pane fade in active">
+                                <h2 ng-bind="bookingsTitleLable">Trips You have Booked! </h2>
+                            
+                                <div class="booking-history" ng-repeat ="top in listdata">
+                                    <div class="booking-info clearfix">
+                                        <div class="date">
+                                            <label class="month">{{top.month}}</label>
+                                            <label class="date">{{top.day}}</label>
+                                            <label class="day">{{top.descday}}</label>
+                                        </div>
+                                        <h4 class="box-title"><i class="icon soap-icon-passenger takeoff-effect yellow-color circle"></i>{{top.fromcity}} - {{top.tocity}}<small>Departure  : &nbsp; {{top.departure}}  &nbsp;/&nbsp; ({{top.departuredate}})</small> <small>Arrival :&nbsp; {{top.arrival}} &nbsp; / &nbsp;({{top.arrivaldate}})</small></h4>
+                                        <dl class="info">
+                                             <dt>Booking ID</dt>
+                                            <dd>{{top.bookingid}}</dd>
+                                            <dt>Ticket ID</dt>
+                                            <dd>{{top.ticketid}}</dd>
+                                            <dt>booked on</dt>
+                                            <dd>{{top.bookingdate}}</dd>
+                                        </dl>
+                                        <button class="btn-mini status" ng-click="navigatetobookingdetails(top)" id="viewPrintTicketLabel" >View /Print Ticket</button>
+                                    </div>
+                                  
+                                    
+                                </div>
+                                <div ng-if ="listdata.length!=0"> 
+            <uib-pagination  total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize"  style =" border-radius: 4px;display: inline-block;margin: 20px 0;padding-left:0; !important" boundary-link-numbers="true" num-pages="numPages" ng-change="pageChanged(bigCurrentPage)"></uib-pagination></div>
+
+                            </div>
+                           
+                            
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+        </section>
+
+      

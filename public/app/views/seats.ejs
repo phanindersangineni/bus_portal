@@ -1,0 +1,110 @@
+<div id="mydiv">
+    <img src="images/spinner.gif" class="ajax-loader"/>
+</div>
+
+<div class="page-title-container">
+            <div class="container">
+                <div class="page-title pull-left">
+                    <h2 class="entry-title" style="font-size: 0.37em; !important" id="ssLabel">Seat Selection</h2>
+                </div>
+                <ul class="breadcrumbs pull-right">
+                    <li><a ng-click="nagivatehome()" id="homeLabel">HOME</a></li>
+                    <li class="active" ng-bind="searchresultsLabel">Search Results</li>
+                </ul>
+            </div>
+        </div>
+
+<section id="content"><br>
+            <div class="container">
+             
+                                </div>
+                <div class="row">
+                    <div  class="col-md-9">
+                        <div class="travelo-box travel-ideas">
+                           
+                            
+                            <div class="suggested-places">
+                                <div class="overflow-hidden">
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <div id="seat-map" style="margin-left :45px;">
+      <div class="front-indicator" id="frontLabel">Front</div>
+           </div>
+
+            <div id="seat-map2" style="margin-left :45px;" ng-if="topseatselection">
+      <div class="front-indicator" >Top</div>
+           </div>
+
+
+          
+           <div class="booking-details">
+  
+  <h3 id="ssotLabel"> Selected Seats (One-way Trip):</h3> 
+   
+   <ul id="selected-seats">
+
+  </ul>
+     <ul id="selected-seats2">
+
+  </ul>
+  
+  
+  
+</div>
+                                        </div>
+                                        <div class="col-sm-5" ng-if="roundtripe">
+                                               <div id="seat-map1" style="margin-left :35px;">
+      <div class="front-indicator" id="frontLabel">Front</div>
+           </div>
+
+            <div id="seat-map3" style="margin-left :45px;" ng-if="topseatselectionreturn">
+      <div class="front-indicator">Top</div>
+           </div>
+
+
+          
+           <div class="booking-details">
+  
+  <h3 id="ssrtLabel"> Selected Seats (Return Trip):</h3> 
+   
+   <ul id="selected-seats1">
+
+  </ul>
+   <ul id="selected-seats3">
+
+  </ul>
+  
+  
+</div>
+                                            
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a ng-click="finalbookingscreen()" class="button btn-medium yellow" id="contButtonLabel">Continue Booking</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+          <div id="guest-checkout" class="travelo-login-box travelo-box">
+                
+             
+                <div class="seperator"><label>{{guestboxLabel1}} </label></div>
+                <form>
+                    <div class="form-group">
+                        <input type="text" ng-model="guestnumber" id="guestnumber" class="input-text full-width" placeholder="{{telplaceholder}}" valid-number>
+                       
+                    </div>
+                
+                </form>
+                <div class="seperator"></div>
+            
+               <p><button type="submit" ng-click="continueguestcheckout()" class="full-width btn-medium"> {{Continuelabel}}</button></p>
+                <div class="seperator"></div>
+                
+            </div>
